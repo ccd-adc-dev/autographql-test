@@ -1,0 +1,27 @@
+version: "3"
+services:
+  autographql:
+    
+    container_name: autographql
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/usr/autographql
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - data-volume:/data/db
+    restart: always
+    logging:
+      driver: none
+volumes:
+  data-volume:
+

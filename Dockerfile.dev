@@ -1,0 +1,9 @@
+FROM node:11
+
+ENV HOME=/usr/autographql
+
+WORKDIR $HOME
+
+RUN npm install -g nodemon
+
+CMD ["nodemon","index.js"]
